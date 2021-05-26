@@ -15,7 +15,8 @@ android:usesCleartextTraffic="true" : http 도 가능하도록
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SimpleWebBrowser">
+        android:theme="@style/Theme.SimpleWebBrowser"
+        android:usesCleartextTraffic="true">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
