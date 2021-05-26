@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
@@ -28,9 +29,11 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled") // 보안 관련 경고 무시
     private fun initViews() {
-        webView.webViewClient = WebViewClient()
-        webView.settings.javaScriptEnabled = true // 자바 스크립트 사용 가능 하도록
-        webView.loadUrl("http://www.google.com")
+        webView.apply {
+            webViewClient = WebViewClient()
+            settings.javaScriptEnabled = true // 자바 스크립트 사용 가능 하도록
+            loadUrl("http://google.com")
+        }
     }
 
     private fun bindViews() {
