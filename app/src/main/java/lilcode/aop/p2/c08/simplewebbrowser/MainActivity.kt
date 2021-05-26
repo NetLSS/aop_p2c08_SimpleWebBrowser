@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
 
             goBackButton.isEnabled = webView.canGoBack()
             goForwardButton.isEnabled = webView.canGoForward()
-
+            addressBar.setText(url)
         }
 
 
