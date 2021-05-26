@@ -10,6 +10,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
 
     private val goForwardButton: ImageButton by lazy {
         findViewById(R.id.goForwardButton)
+    }
+
+    private val refreshLayout: SwipeRefreshLayout by lazy {
+        findViewById(R.id.refreshLayout)
     }
 
     private val webView: WebView by lazy {
@@ -84,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         // 홈 버튼
         goHomeButton.setOnClickListener {
             webView.loadUrl(HOME_URL)
+        }
+
+        // 리프레시 레이아웃
+        refreshLayout.setOnRefreshListener {
+            webView.reload() // 새로 고침
         }
     }
 
