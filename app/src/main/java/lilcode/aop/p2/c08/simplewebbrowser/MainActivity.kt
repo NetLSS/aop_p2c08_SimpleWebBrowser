@@ -6,6 +6,7 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.webkit.URLUtil
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -81,7 +82,13 @@ class MainActivity : AppCompatActivity() {
         // 주소 창
         addressBar.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                webView.loadUrl(v.text.toString())
+                val loadingUrl = v.text.toString()
+
+                if (URLUtil.isNetworkUrl(loadingUrl)){
+                    webView.loadUrl(loadingUrl)
+                }else{
+                    webView.loadUrl("http://$loadingUrl")
+                }
             }
 
             return@setOnEditorActionListener false // 키보드 닫기까지 동작 하도록
