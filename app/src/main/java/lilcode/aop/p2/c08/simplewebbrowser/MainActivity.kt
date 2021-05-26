@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         webView.webViewClient = WebViewClient()
+        webView.settings.javaScriptEnabled = true // 자바 스크립트 사용 가능 하도록
         webView.loadUrl("http://www.google.com")
     }
 }
