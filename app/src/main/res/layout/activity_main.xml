@@ -14,10 +14,13 @@
     android:imeOptions="actionDone" : 액션(엔터) 시 키보드 내려가도록
     android:background="?attr/selectableItemBackground" : ripple 효과
     app:layout_constraintDimensionRatio="1:1" : 가로 세로 1:1로
+    android:elevation="4dp": 뷰를 약간 띄워 그림자 가 보이도록
     -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="0dp"
+        android:elevation="4dp"
+        android:background="@color/white"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
