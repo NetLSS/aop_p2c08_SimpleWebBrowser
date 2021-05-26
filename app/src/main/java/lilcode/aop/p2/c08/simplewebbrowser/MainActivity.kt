@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true // 자바 스크립트 사용 가능 하도록
-            loadUrl("http://google.com")
+            loadUrl(HOME_URL)
         }
     }
 
@@ -80,5 +80,14 @@ class MainActivity : AppCompatActivity() {
         goForwardButton.setOnClickListener {
             webView.goForward()
         }
+
+        // 홈 버튼
+        goHomeButton.setOnClickListener {
+            webView.loadUrl(HOME_URL)
+        }
+    }
+
+    companion object {
+        private const val HOME_URL = "http://www.google.com"
     }
 }
