@@ -118,6 +118,10 @@ class MainActivity : AppCompatActivity() {
             refreshLayout.isRefreshing = false
 
             progressBar.hide()
+
+            goBackButton.isEnabled = webView.canGoBack()
+            goForwardButton.isEnabled = webView.canGoForward()
+
         }
 
 
