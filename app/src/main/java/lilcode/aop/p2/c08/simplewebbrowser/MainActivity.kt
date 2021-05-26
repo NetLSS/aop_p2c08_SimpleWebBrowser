@@ -97,6 +97,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // inner 를 붙여서 상위 클래스 접근 가능하도록 설정
+    inner class WebViewClient: android.webkit.WebViewClient(){
+
+        // 페이지가 다 로딩 되었을때
+        override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
+
+            refreshLayout.isRefreshing = false
+        }
+    }
+
     companion object {
         private const val HOME_URL = "http://www.google.com"
     }
