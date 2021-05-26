@@ -1,6 +1,7 @@
 package lilcode.aop.p2.c08.simplewebbrowser
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.core.widget.ContentLoadingProgressBar
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 /*
@@ -42,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         findViewById(R.id.addressBar)
     }
 
+    private val progressBar: ContentLoadingProgressBar by lazy {
+        findViewById(R.id.progressBar)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -65,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         webView.apply {
             webViewClient = WebViewClient()
+            webChromeClient = WebChromeClient()
             settings.javaScriptEnabled = true // 자바 스크립트 사용 가능 하도록
             loadUrl(HOME_URL)
         }
@@ -109,6 +116,27 @@ class MainActivity : AppCompatActivity() {
             super.onPageFinished(view, url)
 
             refreshLayout.isRefreshing = false
+
+            progressBar.hide()
+        }
+
+
+        // 시작 시
+        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+            super.onPageStarted(view, url, favicon)
+
+            progressBar.show()
+        }
+
+    }
+
+    inner class WebChromeClient: android.webkit.WebChromeClient(){
+
+        // 페이지 로딩 정도 0~100
+        override fun onProgressChanged(view: WebView?, newProgress: Int) {
+            super.onProgressChanged(view, newProgress)
+
+            progressBar.progress = newProgress
         }
     }
 
