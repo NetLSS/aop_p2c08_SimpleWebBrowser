@@ -41,6 +41,17 @@ class MainActivity : AppCompatActivity() {
         bindViews()
     }
 
+    // 폰에서 뒤로가기 버튼 눌렀을 때
+    override fun onBackPressed() {
+
+        if(webView.canGoBack()){
+            webView.goBack()
+        }
+        else{
+            super.onBackPressed()
+        }
+    }
+
     @SuppressLint("SetJavaScriptEnabled") // 보안 관련 경고 무시
     private fun initViews() {
         webView.apply {
