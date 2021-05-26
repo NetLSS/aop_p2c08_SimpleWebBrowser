@@ -12,6 +12,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
+/*
+https://developer.android.com/reference/androidx/core/widget/ContentLoadingProgressBar?hl=en
+로딩창 인데 나타났다 사라질 때 최소한의 시간동안 유지되고 사라짐
+ */
 class MainActivity : AppCompatActivity() {
 
     private val goHomeButton: ImageButton by lazy {
