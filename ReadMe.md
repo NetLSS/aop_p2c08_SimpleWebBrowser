@@ -1,5 +1,7 @@
 # aop-part2-chapter08
 
+보다 자세한 내용은 저의 [블로그 포스터](https://whyprogrammer.tistory.com/585)를 통해 확인 가능합니다.
+
 ## 목차
 0. 인트로, 프로젝트 셋업
 1. 기본 UI 구성하기
